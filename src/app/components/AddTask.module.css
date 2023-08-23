@@ -1,0 +1,33 @@
+.formstyle{
+    margin-bottom: 1rem;
+    margin-top: 0.75rem;
+}
+
+.inputtext{
+    width: 100%;
+    border: 1px solid;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.inputtext:focus{
+    outline: none;
+    border-color: rgb(38, 153, 254);
+}
+
+.addtaskbutton{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: white;
+    background-color: rgb(38, 153, 254);
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 2px 4px -1px rgb(0, 55, 104), 0 4px 6px 1px rgb(0, 55, 104);
+    transition: all 0.3s;
+}
+
+.addtaskbutton:hover{
+    background-color: rgb(80, 173, 255);
+    transform: scale(0.99);
+    box-shadow: 0 0.5px 2px -1px rgb(0, 55, 104), 0 1px 2px 1px rgb(0, 55, 104);
+}
