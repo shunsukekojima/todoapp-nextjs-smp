@@ -20,7 +20,7 @@ export default function Home() {
 
     return (
         <main className={styles.main}>
-            <h1>Next.js13 Todo app</h1>
+            <h1>Todo app</h1>
             <div className={styles.container}>
                 <div className={styles.box}>
                     <AddTask />
