@@ -6,7 +6,7 @@ import { getALLTodos } from "./api/api";
 
 export default async function Home() {
     const tasks = await getALLTodos();
-    console.log(tasks);
+    // console.log(tasks);
 
     return (
         <main className={styles.main}>
@@ -14,7 +14,7 @@ export default async function Home() {
             <div className={styles.container}>
                 <div className={styles.box}>
                     <AddTask />
-                    <TodoList />
+                    <TodoList tasks={tasks} />
                 </div>
             </div>
         </main>
