@@ -28,5 +28,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 ## Prismaの稼働
 
 - ```.env```ファイルを作成
-- ```.env```内にDBの内容により以下（postgreSQLの場合）を設定
+- ```.env```内にDBの内容により以下接続情報（postgreSQLの場合）を設定
 - ```DATABASE_URL="postgresql://[ユーザー名]:[パスワード]@127.0.0.1:5432/[DB名]?schema=[スキーマ名]"```
+- DBとスキーマに権限を与えておく
+- ```npx prisma migrate dev --name init```をターミナルで実行で```schema.prisma```内で定義したテーブルモデルがDBに反映
