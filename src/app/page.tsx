@@ -9,14 +9,14 @@ import { Task } from "./api/type";
 
 export default function Home() {
     const [dbsource, setDBsource] = useState<Task[]>([]);
+
     useEffect(() => {
         const fetchtasks = async () => {
             const tasks = await getALLTodos();
             setDBsource(tasks);
         };
         fetchtasks();
-    });
-    // console.log(tasks);
+    }, [dbsource]);
 
     return (
         <main className={styles.main}>

@@ -10,7 +10,6 @@ export default function AddTask() {
     const handlesubmit = async (e: FormEvent) => {
         e.preventDefault();
         await postTodos(tasktitle);
-        await getALLTodos();
         setTasktitle("");
     };
 
