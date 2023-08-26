@@ -1,11 +1,21 @@
-import Image from "next/image";
+"use client";
+
 import styles from "./page.module.css";
 import AddTask from "./components/AddTask";
 import TodoList from "./components/TodoList";
 import { getALLTodos } from "./api/api";
+import { useEffect, useState } from "react";
+import { Task } from "./api/type";
 
-export default async function Home() {
-    const tasks = await getALLTodos();
+export default function Home() {
+    const [dbsource, setDBsource] = useState<Task[]>([]);
+    useEffect(() => {
+        const fetchtasks = async () => {
+            const tasks = await getALLTodos();
+            setDBsource(tasks);
+        };
+        fetchtasks();
+    });
     // console.log(tasks);
 
     return (
@@ -14,7 +24,7 @@ export default async function Home() {
             <div className={styles.container}>
                 <div className={styles.box}>
                     <AddTask />
-                    <TodoList tasks={tasks} />
+                    <TodoList tasks={dbsource} />
                 </div>
             </div>
         </main>
