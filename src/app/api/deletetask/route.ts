@@ -1,9 +1,5 @@
 import { NextRequest,NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client"; 
-import { getALLTodos } from "../api";
-import { Task } from '../type';
-
-const prisma = new PrismaClient();
+import prisma from "@/lib/prisma";
 
 export async function DELETE(req:NextRequest) {
     const id = parseInt(req.nextUrl.searchParams.get('id')!);

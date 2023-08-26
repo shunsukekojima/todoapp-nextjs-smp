@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Task } from "../api/type";
-import { deleteTodos, getALLTodos } from "../api/api";
+import { deleteTodos, editTodos, getALLTodos } from "../api/api";
 import styles from "./Todo.module.css";
 
 interface TodoListProps {
@@ -9,6 +9,7 @@ interface TodoListProps {
 
 export default function Todo({ todo }: TodoListProps) {
     const [isEditing, setIsEditing] = useState(false);
+    const [isEditTask, setIsEditTask] = useState(todo.tasks);
 
     const deleteHundleClick = async (id: number) => {
         deleteTodos(id);
@@ -20,12 +21,20 @@ export default function Todo({ todo }: TodoListProps) {
     };
 
     const saveHundleClick = async () => {
+        await editTodos(todo.id, isEditTask);
         setIsEditing(false);
     };
     return (
         <li key={todo.id} className={styles.task}>
             {isEditing ? (
-                <input type="text" className={styles.edittask} />
+                <input
+                    type="text"
+                    className={styles.edittask}
+                    value={isEditTask}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setIsEditTask(e.target.value)
+                    }
+                />
             ) : (
                 <span>{todo.tasks}</span>
             )}
