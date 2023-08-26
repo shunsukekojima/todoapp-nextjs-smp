@@ -42,7 +42,7 @@ export default function TodoList({ tasks }: TasksProps) {
                             削除
                         </button>
 
-                        {isEditing ? (
+                        {/* {isEditing ? (
                             <button
                                 className={styles.editbutton}
                                 onClick={saveHundleClick}
@@ -56,7 +56,7 @@ export default function TodoList({ tasks }: TasksProps) {
                             >
                                 編集
                             </button>
-                        )}
+                        )} */}
                     </div>
                 </li>
             ))}
