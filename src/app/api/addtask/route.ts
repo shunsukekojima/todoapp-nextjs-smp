@@ -1,13 +1,14 @@
-import { NextRequest,NextResponse } from "next/server"; 
+import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-export async function POST(req:NextRequest) {
+export async function POST(req: NextRequest) {
     const body = await req.json();
-    await prisma.task.create({
-        data:{
-            tasks: body.task,
-        }
-    })
 
+    await prisma.task.create({
+        data: {
+            tasks: body.task,
+            userId: body.userId,
+        },
+    });
     return NextResponse.json(body);
 }

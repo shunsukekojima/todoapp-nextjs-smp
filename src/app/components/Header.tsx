@@ -5,7 +5,7 @@ import { options } from "@/app/options";
 
 export default async function Header() {
     const session = await getServerSession(options);
-    // console.log(session);
+
     return (
         <div className={styles.head}>
             {session?.user.email !== undefined ? (

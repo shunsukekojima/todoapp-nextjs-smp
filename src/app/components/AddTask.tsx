@@ -2,19 +2,31 @@
 
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./AddTask.module.css";
-import { getALLTodos, postTodos } from "../api/api";
+import { postTodos } from "../api/api";
+import { useSession } from "next-auth/react";
 
 export default function AddTask() {
     const [tasktitle, setTasktitle] = useState("");
+    const { data: session } = useSession();
 
     const handlesubmit = async (e: FormEvent) => {
         e.preventDefault();
-        await postTodos(tasktitle);
+        if (session?.user.id !== undefined) {
+            await postTodos(
+                tasktitle,
+                JSON.stringify(session?.user.id).replaceAll('"', "")
+            );
+        } else {
+            // トーストをつけたい
+            window.alert("ログインしてください");
+        }
         setTasktitle("");
     };
 
     return (
-        <form className={styles.formstyle} onSubmit={handlesubmit}>
+        <form
+            className={styles.formstyle}
+            onSubmit={handlesubmit}>
             <input
                 type="text"
                 className={styles.inputtext}
