@@ -11,6 +11,13 @@ datasource db {
 }
 
 model task {
-  id    Int     @id @default(autoincrement())
-  tasks String?
+  id     Int     @id @default(autoincrement())
+  tasks  String?
+  userId Int
+}
+
+model User {
+  userId   Int    @id @default(autoincrement())
+  email    String
+  password String
 }
