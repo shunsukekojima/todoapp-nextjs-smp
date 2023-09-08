@@ -2,7 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
-import styles from "./form.module.css";
+import styles from "./registerform.module.css";
 
 export const RegisterForm = () => {
     let [loading, setLoading] = useState(false);

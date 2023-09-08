@@ -6,15 +6,18 @@ import Todo from "./Todo";
 
 interface TasksProps {
     tasks: Task[];
+    execute: () => void;
 }
 
-export default function TodoList({ tasks }: TasksProps) {
+export default function TodoList({ tasks, execute }: TasksProps) {
+    console.log(execute);
     return (
         <ul className={styles.list}>
             {tasks.map(todo => (
                 <Todo
                     key={todo.id}
                     todo={todo}
+                    execute={execute}
                 />
             ))}
         </ul>

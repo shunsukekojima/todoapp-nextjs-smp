@@ -2,37 +2,44 @@
 
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
-import styles from "./form.module.css";
+import styles from "./loginform.module.css";
+import { useSearchParams, useRouter } from "next/navigation";
 
-export const RegisterForm = () => {
+export const LoginForm = () => {
+    const router = useRouter();
     let [loading, setLoading] = useState(false);
     let [formValues, setFormValues] = useState({
         email: "",
         password: "",
     });
+    let [error, setError] = useState("");
+
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get("callbackurl") || "/";
 
     const onSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
 
         try {
-            const res = await fetch("/api/register", {
-                method: "POST",
-                body: JSON.stringify(formValues),
-                headers: { "Content-Type": "application/json" },
+            const res = await signIn("credentials", {
+                redirect: false,
+                email: formValues.email,
+                password: formValues.password,
+                callbackUrl,
             });
 
             setLoading(false);
-            if (!res.ok) {
-                alert((await res.json()).message);
-                return;
-            }
 
-            signIn(undefined, { callbackUrl: "/" });
+            if (!res?.error) {
+                router.push(callbackUrl);
+            } else {
+                setError("Emailかパスワードが間違っています");
+            }
         } catch (error: any) {
             setLoading(false);
             console.error(error);
-            alert(error.message);
+            setError(error);
         }
     };
 

@@ -1,16 +1,24 @@
+.title {
+    text-align: center;
+}
+
 .formcss {
     display: flex;
     flex-direction: column;
-    width: 500;
+    width: 40vh;
     row-gap: 10;
 }
 
 .textbox {
     padding: 1rem;
+    border-radius: 30px;
+    font-size: 1.2rem;
 }
 
 .formbutton {
+    background-color: rgb(0, 102, 255);
     color: azure;
+    margin: 0.5rem 0;
     padding: 1rem;
     cursor: pointer;
 }

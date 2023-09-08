@@ -1,5 +1,6 @@
-import { RegisterForm } from "./form";
-import styles from "./form.module.css";
+import { RegisterForm } from "./registerform";
+import styles from "./registerform.module.css";
+import { SignInButton } from "../components/LoginButton";
 
 import React from "react";
 
@@ -9,6 +10,7 @@ export default function RegisterPage() {
             <div>
                 <h1 className={styles.title}>新規登録</h1>
                 <RegisterForm />
+                <SignInButton />
             </div>
         </div>
     );

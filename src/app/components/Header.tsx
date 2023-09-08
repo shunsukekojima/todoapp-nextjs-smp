@@ -8,12 +8,7 @@ export default async function Header() {
 
     return (
         <div className={styles.head}>
-            {session?.user.email !== undefined ? (
-                <SignOutButton />
-            ) : (
-                <SignInButton />
-            )}
-
+            {session?.user.email !== undefined ? <SignOutButton /> : ""}
             <p>
                 {session?.user.email !== undefined
                     ? JSON.stringify(session?.user.email).replaceAll('"', "")

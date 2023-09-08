@@ -30,7 +30,7 @@ export function RegisterButton() {
         <Link
             className={styles.signinbutton}
             href="/register">
-            Register
+            新規登録
         </Link>
     );
 }
