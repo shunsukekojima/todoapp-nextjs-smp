@@ -33,6 +33,7 @@ export const LoginForm = () => {
 
             if (!res?.error) {
                 router.push(callbackUrl);
+                router.refresh();
             } else {
                 setError("Emailかパスワードが間違っています");
             }
