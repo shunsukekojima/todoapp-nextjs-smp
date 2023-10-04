@@ -44,6 +44,7 @@ export const options: NextAuthOptions = {
             },
         }),
     ],
+    // pages
     pages: { signIn: "/login" },
     callbacks: {
         session: ({ session, token }) => {
